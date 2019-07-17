@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+
+<html>
+    <style type="text/css">
+        .normal{
+            width: 7em;
+            height: 2em;
+            color: white;
+            font-size: 3em;
+            text-align: center;
+            line-height: 2em;
+        }
+    .red{
+        background-color: red;
+    }
+    .green{
+        background-color: green;
+    }
+    .blue{
+        background-color: blue;
+    }
+    </style>
+    <body>
+        <h1>WJSBridgeHandler</h1>
+        
+        <div type="button" id="normal" class="normal red">JS Call Normal</div>
+        <p></p>
+        <div type="button" id="params" class="normal green">JS Call Params</div>
+        <p></p>
+        <div type="button" id="callBack" class="normal blue">JS Call CallBack</div>
+        <p></p>
+        <h3 id="inter" style="font-size: 3em"></h3>
+        <script>
+            
+            var btn = document.getElementById("normal");
+            btn.onclick = function(){
+                WJSBridge.walletCall("callNativeFunction");
+            };
+        var btn = document.getElementById("params");
+        btn.onclick = function(){
+            WJSBridge.walletCall("share", {
+                                 title:'title',
+                                 context: 'context',
+                                 url: 'url'
+                                 });
+        };
+        var btn = document.getElementById("callBack");
+        btn.onclick = function(){
+            WJSBridge.walletCall("login", {
+                                 userName:'nanli',
+                                 password:'qwe'
+                                 }, function(data){
+                                 document.getElementById("inter").innerText = 'login success';
+                                 console.log('login success:'+ data);
+                                 });
+        };
+        
+        
+        
+        var nativeCall = function (data){
+            var lab = document.getElementById("inter");
+            lab.innerText = data;
+        };
+        
+            </script>
+    </body>
+    
+</html>
