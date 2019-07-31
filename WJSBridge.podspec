@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WJSBridge"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "JavaScript 与 iOS 交互."
 
   # This description is used to generate tags and improve search results.
